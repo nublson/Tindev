@@ -70,7 +70,7 @@ const Main = ({ match }) => {
 					))}
 				</ul>
 			) : (
-				<div className="empty">Ended :(</div>
+				<div className="empty">Empty list.</div>
 			)}
 		</div>
 	)
