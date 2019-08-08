@@ -5,16 +5,16 @@
 	align-items: center;
 }
 
-form {
+.login-container form {
 	width: 100%;
 	max-width: 300px;
 	display: flex;
 	flex-direction: column;
 }
 
-input {
+.login-container input {
 	margin-top: 20px;
-	border: 1pxsolid #dddddd;
+	border: 1px solid #dddddd;
 	border-radius: 4px;
 	height: 48px;
 	padding: 0 20px;
@@ -22,11 +22,11 @@ input {
 	color: #666666;
 }
 
-input::placeholder {
+.login-container input::placeholder {
 	color: #999999;
 }
 
-button {
+.login-container button {
 	margin-top: 10px;
 	border: 0;
 	border-radius: 4px;
