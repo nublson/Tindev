@@ -1,12 +1,10 @@
 import React from 'react'
 import './App.css'
 
-function App() {
-	return (
-		<div className="App">
-			<h1>Tinder Clone</h1>
-		</div>
-	)
+import Routes from './routes'
+
+const App = () => {
+	return <Routes />
 }
 
 export default App
