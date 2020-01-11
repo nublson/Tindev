@@ -1,19 +1,24 @@
 import React from 'react'
 import { Formik, Field, Form } from 'formik'
+import api from '../../services/api'
 
 import './Login.scss'
 
 import logo from '../../assets/logo.svg'
 
-const Login = () => {
+const Login = ({ history }) => {
 	return (
 		<div className='login-container'>
 			<Formik
 				initialValues={{ username: '' }}
-				onSubmit={(values, actions) => {
-					console.log(values)
+				onSubmit={async ({ username }) => {
+					const response = await api.post('/devs', {
+						username
+					})
 
-					actions.resetForm()
+					const { _id } = response.data
+
+					history.push(`/dev/${_id}`)
 				}}
 			>
 				{() => (
@@ -23,7 +28,7 @@ const Login = () => {
 							type='text'
 							name='username'
 							placeholder='Your github username'
-							autocomplete='off'
+							autoComplete='off'
 						/>
 
 						<button type='submit'>Login</button>
