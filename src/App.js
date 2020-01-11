@@ -1,8 +1,10 @@
 import React from 'react'
 import './App.scss'
 
+import Login from './Pages/Login/Login'
+
 const App = () => {
-	return <h1>Hello World</h1>
+	return <Login />
 }
 
 export default App
