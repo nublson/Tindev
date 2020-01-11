@@ -1,4 +1,4 @@
-# Aircnc (Frontend w/ React.js)
+# Tindev (Frontend w/ React.js)
 
 ![Tindev Preview](./thumbnail.png)
 
