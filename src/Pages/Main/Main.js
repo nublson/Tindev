@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import api from '../../services/api'
 
 import './Main.scss'
@@ -24,32 +25,66 @@ const Main = ({ match }) => {
 		loadUsers()
 	}, [match.params.id])
 
+	async function handleLike(targetDevId) {
+		await api.post(`devs/${targetDevId}/likes`, null, {
+			headers: {
+				user: match.params.id
+			}
+		})
+
+		setDevs(devs.filter(dev => dev._id !== targetDevId))
+	}
+
+	async function handleDislike(targetDevId) {
+		await api.post(`devs/${targetDevId}/dislikes`, null, {
+			headers: {
+				user: match.params.id
+			}
+		})
+
+		setDevs(devs.filter(dev => dev._id !== targetDevId))
+	}
+
 	return (
 		<div className='main-container'>
-			<img src={logo} alt='Tindev' />
+			<Link to='/'>
+				<img src={logo} alt='Tindev' />
+			</Link>
 
-			<ul>
-				{devs.map(dev => (
-					<li key={dev._id}>
-						<img src={dev.avatar} alt='' />
-						<footer>
-							<strong>{dev.name}</strong>
-							<p>{dev.bio}</p>
-						</footer>
+			{devs.length > 0 ? (
+				<ul>
+					{devs.map(dev => (
+						<li key={dev._id}>
+							<img src={dev.avatar} alt='' />
+							<footer>
+								<strong>{dev.name}</strong>
+								<p>{dev.bio}</p>
+							</footer>
 
-						<div className='buttons'>
-							<button type='button'>
-								{' '}
-								<img src={dislike} alt='Dislike' />{' '}
-							</button>
-							<button type='button'>
-								{' '}
-								<img src={like} alt='Like' />{' '}
-							</button>
-						</div>
-					</li>
-				))}
-			</ul>
+							<div className='buttons'>
+								<button
+									type='button'
+									onClick={() => handleDislike(dev._id)}
+								>
+									{' '}
+									<img src={dislike} alt='Dislike' />{' '}
+								</button>
+								<button
+									type='button'
+									onClick={() => handleLike(dev._id)}
+								>
+									{' '}
+									<img src={like} alt='Like' />{' '}
+								</button>
+							</div>
+						</li>
+					))}
+				</ul>
+			) : (
+				<div className='empty'>
+					<p>Empty! </p>
+				</div>
+			)}
 		</div>
 	)
 }
