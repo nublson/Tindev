@@ -8,9 +8,11 @@ import './Main.scss'
 import logo from '../../assets/logo.svg'
 import like from '../../assets/like.svg'
 import dislike from '../../assets/dislike.svg'
+import itsamatch from '../../assets/itsamatch.png'
 
 const Main = ({ match }) => {
 	const [devs, setDevs] = useState([])
+	const [matchDev, setMatchDev] = useState(null)
 
 	useEffect(() => {
 		async function loadUsers() {
@@ -24,7 +26,7 @@ const Main = ({ match }) => {
 		}
 
 		loadUsers()
-	}, [match.params.id])
+	}, [devs, match.params.id])
 
 	useEffect(() => {
 		const socket = io(process.env.REACT_APP_BACKEND_URL, {
@@ -32,7 +34,7 @@ const Main = ({ match }) => {
 		})
 
 		socket.on('match', dev => {
-			console.log(dev)
+			setMatchDev(dev)
 		})
 	}, [match.params.id])
 
@@ -94,6 +96,30 @@ const Main = ({ match }) => {
 			) : (
 				<div className='empty'>
 					<p>Empty! </p>
+				</div>
+			)}
+
+			{matchDev && (
+				<div className='match-container'>
+					<img src={itsamatch} alt="It's a match" />
+
+					<a
+						href={`https://github.com/${matchDev.user}`}
+						target='_blank'
+						rel='noopener noreferrer'
+					>
+						<img
+							className='avatar'
+							src={matchDev.avatar}
+							alt='Dev Avatar'
+						/>
+					</a>
+					<strong>{matchDev.name}</strong>
+					<p>{matchDev.bio}</p>
+
+					<button type='button' onClick={() => setMatchDev(null)}>
+						CLOSE
+					</button>
 				</div>
 			)}
 		</div>
