@@ -1,6 +1,6 @@
 # Tindev (Frontend w/ React.js)
 
-![Tindev Preview](./thumbnail2.png)
+![Tindev Preview](./tindev.png)
 
 This is the frontend web version of Tindev, a Tinder clone focused on developers who want to find others for project collaboration, mentoring, brainstorming and more.
 
