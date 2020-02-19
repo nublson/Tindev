@@ -1,6 +1,12 @@
 # Tindev (Frontend w/ React.js)
 
+<<<<<<< HEAD
 ![Tindev Preview](./tindev.png)
+=======
+Mobile version [here](https://github.com/nubelsondev/Tindev-Mobile).
+
+![Tindev Preview](./thumbnail2.png)
+>>>>>>> 8519d9ab4606695952a48bdd65eb7e6c77d4ea10
 
 This is the frontend web version of Tindev, a Tinder clone focused on developers who want to find others for project collaboration, mentoring, brainstorming and more.
 
