@@ -1,6 +1,6 @@
 # Tindev (Frontend w/ React.js)
 
-Mobile version [here}(https://github.com/nubelsondev/Tindev-Mobile).
+Mobile version [here](https://github.com/nubelsondev/Tindev-Mobile).
 
 ![Tindev Preview](./thumbnail2.png)
 
